@@ -72,4 +72,6 @@ Response sample
 
 class Request(object):
 
-    def __init__(self, request_dict, metadata=None)
+    def __init__(self, request, metadata=None):
+       self.sessionAttributes = request["sessionAttributes"]
+       self.body = request

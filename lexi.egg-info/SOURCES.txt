@@ -1,0 +1,8 @@
+setup.py
+lexi/__init__.py
+lexi/alexa_io.py
+lexi.egg-info/PKG-INFO
+lexi.egg-info/SOURCES.txt
+lexi.egg-info/dependency_links.txt
+lexi.egg-info/not-zip-safe
+lexi.egg-info/top_level.txt

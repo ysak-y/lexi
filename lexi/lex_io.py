@@ -70,6 +70,17 @@ Response sample
 }
 """
 
+DEFAULT_RESPONSE = {
+            'dialogAction': {
+                    'type': 'ElicitIntent'
+                }
+        }
+
+def lambda_handler(request_obj, context=None):
+
+    return DEFAULT_RESPONSE
+
+
 class Request(object):
 
     def __init__(self, request, metadata=None):

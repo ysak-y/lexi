@@ -17,3 +17,9 @@ class TestResponse(object):
     
     def test_default_response(self):
         eq_(DEFAULT_RESPONSE, lex.lambda_handler(DEFAULT_REQUEST, None))
+
+    #def test_elicit_slot_response(self):
+
+    #def test_confirm_intent_response(self):
+
+    #def test_

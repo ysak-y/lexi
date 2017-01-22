@@ -241,3 +241,10 @@ class MessageBuilder(object):
                 'contentType': content_type,
                 'content': content
                 }
+
+    @classmethod
+    def build_message(self, content_type, content):
+        return {
+                'contentType': content_type,
+                'content': content
+                }

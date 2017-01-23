@@ -70,6 +70,9 @@ Response sample
 }
 """
 
+# Requestクラス作って、get_sessionでsessionAttributesをいい感じにdicに変換したやつを返すようにする。
+#recipe = json.loads(sessionAttributes["Recipe"])
+
 class Response(object):
 
     def __init__(self, dic):

@@ -99,7 +99,7 @@ class ResponseBuilder(object):
                 If card is None, Amazon Lex uses one of the bot's
                 clarification prompts.(see the Error Handling section in the console.)
         '''
-        response = self._build_response('ElicitSlot', message=message, card=card)
+        response = self._build_response('ElicitIntent', message=message, card=card)
         return Response(response)
 
     @classmethod

@@ -202,6 +202,7 @@ class ResponseBuilder(object):
         response = self._build_response('close', fulfillment_state=fulfillment_state, message=message, card=card)
         return Response(response)
 
+    @classmethod
     def _build_response(self, response_type, fulfillment_state=None, message=None, intent_name=None, slots=None, slot_to_elicit=None, card=None):
 
         dic = {

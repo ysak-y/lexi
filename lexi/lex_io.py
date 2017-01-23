@@ -99,7 +99,7 @@ class ResponseBuilder(object):
                 If card is None, Amazon Lex uses one of the bot's
                 clarification prompts.(see the Error Handling section in the console.)
         '''
-        response = _build_response('ElicitSlot', message=message, card=card)
+        response = self._build_response('ElicitSlot', message=message, card=card)
         return Response(response)
 
     @classmethod
@@ -130,7 +130,7 @@ class ResponseBuilder(object):
                 If card is None, Amazon Lex uses one of the bot's
                 clarification prompts.(see the Error Handling section in the console.)
         '''
-        response = _build_response('ElicitSlot', intent_name=intent_name, slot_to_elicit=slot_to_elicit, slots=slots, message=message, card=card)
+        response = self._build_response('ElicitSlot', intent_name=intent_name, slot_to_elicit=slot_to_elicit, slots=slots, message=message, card=card)
         return Response(response)
 
     @classmethod
@@ -159,7 +159,7 @@ class ResponseBuilder(object):
                 If card is None, Amazon Lex uses one of the bot's
                 clarification prompts.(see the Error Handling section in the console.)
         '''
-        response = _build_response('ConfirmIntent', intent_name=intent_name, slots=slots, message=message, card=card)
+        response = self._build_response('ConfirmIntent', intent_name=intent_name, slots=slots, message=message, card=card)
         return Response(response)
 
     @classmethod
@@ -173,7 +173,7 @@ class ResponseBuilder(object):
                 Slots must include all of the slots configured for the intent.
                 If the value of a slot is unknown, it must be explicitly set to null (similar to Lambda function request)
         '''
-        response = _build_response('delegate', slots=slots)
+        response = self._build_response('delegate', slots=slots)
         return Response(response)
 
     @classmethod
@@ -199,7 +199,7 @@ class ResponseBuilder(object):
                 If card is None, Amazon Lex uses one of the bot's
                 clarification prompts.(see the Error Handling section in the console.)
         '''
-        response = _build_response('close', fulfillment_state=fulfillment_state, message=message, card=card)
+        response = self._build_response('close', fulfillment_state=fulfillment_state, message=message, card=card)
         return Response(response)
 
     def _build_response(self, response_type, fulfillment_state=None, message=None, intent_name=None, slots=None, slot_to_elicit=None, card=None):
@@ -239,14 +239,8 @@ class CardBuilder(object):
 
 class MessageBuilder(object):
 
-    def __init__(self, content_type, content):
-        self.content = {
-                'contentType': content_type,
-                'content': content
-                }
-
     @classmethod
-    def build_message(self, content_type, content):
+    def build_message(self, content, content_type="PlainText"):
         return {
                 'contentType': content_type,
                 'content': content

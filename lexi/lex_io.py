@@ -173,7 +173,7 @@ class ResponseBuilder(object):
                 Slots must include all of the slots configured for the intent.
                 If the value of a slot is unknown, it must be explicitly set to null (similar to Lambda function request)
         '''
-        response = self._build_response('delegate', slots=slots)
+        response = self._build_response('Delegate', slots=slots)
         return Response(response)
 
     @classmethod
@@ -199,7 +199,7 @@ class ResponseBuilder(object):
                 If card is None, Amazon Lex uses one of the bot's
                 clarification prompts.(see the Error Handling section in the console.)
         '''
-        response = self._build_response('close', fulfillment_state=fulfillment_state, message=message, card=card)
+        response = self._build_response('Close', fulfillment_state=fulfillment_state, message=message, card=card)
         return Response(response)
 
     @classmethod

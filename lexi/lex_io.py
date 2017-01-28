@@ -82,6 +82,9 @@ class Response(object):
         self.content['sessionAttributes'] = session_attributes
         return self
 
+    def to_dict(self):
+        return dict(self.content)
+
 class ResponseBuilder(object):
 
     @classmethod
@@ -231,12 +234,40 @@ class ResponseBuilder(object):
 
         return dic
 
+class Card(object):
+    def __init__(self, dic):
+        self.content = dic
+
+    def with_buttons(self, buttons):
+        self.content['genericAttachments']['buttons'] = buttons
+        return self
+
+    def to_dict(self):
+        return dict(self.content)
+
 class CardBuilder(object):
 
-    def __init__(self, version):
-        self.content = {}
-        self.content['version'] = version
-        self.content['contentType'] = 'application/vnd.amazonaws.card.generic'
+    @classmethod
+    def build_response_card(version=None, title=None, sub_title=None, image_url=None, attachment_link_url=None):
+        card_contents = {
+                'contentType': 'application/vnd.amazonaws.card.generic'
+                }
+        generic_attachments = {}
+
+        if version:
+            card_contents['version'] = version
+        if title:
+            generic_attachments['title'] = title
+        if sub_title:
+            generic_attachments['subTitle'] = sub_title
+        if image_url:
+            generic_attachments['imageUrl'] = image_url
+        if attachment_link_url:
+            generic_attachments['attachmentLinkUrl'] = attachment_link_url
+
+        card_contents['genericAttachments'] = generic_attachments
+
+        return Card(card_contents)
 
 class MessageBuilder(object):
 

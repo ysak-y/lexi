@@ -249,6 +249,9 @@ class CardBuilder(object):
 
     @classmethod
     def build_response_card(version=None, title=None, sub_title=None, image_url=None, attachment_link_url=None):
+        '''
+            See http://docs.aws.amazon.com/ja_jp/lex/latest/dg/ex-resp-card.html
+        '''
         card_contents = {
                 'contentType': 'application/vnd.amazonaws.card.generic'
                 }

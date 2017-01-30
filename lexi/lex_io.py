@@ -213,6 +213,23 @@ class ResponseBuilder(object):
         return Response(response)
 
     @classmethod
+    def has_required_parameters(**kargs):
+        none_parameters = []
+        for k in kargs:
+            if kargs[k] is None:
+                none_parameters.append(str(k))
+        if len(none_parameters) > 0:
+            try:
+                raise InvalidParameterError(none_parameters)
+            except InvalidParameterError as e:
+                none_parameters = e.value
+                message = 'You might not assign value to requied parameter(s). Check '
+                for v in none_parameters:
+                    message += ' ' + str(v) + ' '
+                print(message)
+
+
+    @classmethod
     def _build_response(self, response_type, fulfillment_state=None, message=None, intent_name=None, slots=None, slot_to_elicit=None, card=None):
 
         dic = {
@@ -240,6 +257,13 @@ class ResponseBuilder(object):
             dic['dialogAction']['slotToElicit'] = slot_to_elicit
 
         return dic
+
+class InvalidParameterError(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return reqr(self.value)
 
 class Card(object):
     def __init__(self, dic):

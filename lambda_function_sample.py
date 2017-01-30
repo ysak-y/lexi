@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import lexi
+from lexi import lex
 
 def lambda_handler(request, context=None):
     intent_name = request['currentIntent']['name']
-    return globals()[intent_name](request, context).to_dict()
+    req = lex.Request(request).to_dict 
+    return globals()[intent_name](req, context).to_dict()

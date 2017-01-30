@@ -1,1 +1,1 @@
-from . import lex_io
+from . import lex_io as lex

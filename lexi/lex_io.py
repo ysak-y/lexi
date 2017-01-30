@@ -99,6 +99,8 @@ class ResponseBuilder(object):
         '''
             Argments
 
+            #Optional
+
             message:
                 Optional. you can build message using MessageBuilder.
                 If message is None, Amazon Lex uses one of the bot's
@@ -130,6 +132,8 @@ class ResponseBuilder(object):
                  Informs Amazon Lex that the user is expected to provide a slot value in response.
                  For example, a value for the pizzaSize or pizzaKind slots.
 
+            # Optional
+
             message:
                 Optional. you can build message using MessageBuilder.
                 If message is None, Amazon Lex uses one of the bot's
@@ -140,6 +144,7 @@ class ResponseBuilder(object):
                 If card is None, Amazon Lex uses one of the bot's
                 clarification prompts.(see the Error Handling section in the console.)
         '''
+        self.has_required_parameters({'intent_name': intent_name, 'slots': slots})
         response = self._build_response('ElicitSlot', intent_name=intent_name, slot_to_elicit=slot_to_elicit, slots=slots, message=message, card=card)
         return Response(response)
 
@@ -169,6 +174,7 @@ class ResponseBuilder(object):
                 If card is None, Amazon Lex uses one of the bot's
                 clarification prompts.(see the Error Handling section in the console.)
         '''
+        self.has_required_parameters({'intent_name': intent_name, 'slots': slots})
         response = self._build_response('ConfirmIntent', intent_name=intent_name, slots=slots, message=message, card=card)
         return Response(response)
 
@@ -183,6 +189,7 @@ class ResponseBuilder(object):
                 Slots must include all of the slots configured for the intent.
                 If the value of a slot is unknown, it must be explicitly set to null (similar to Lambda function request)
         '''
+        self.has_required_parameters({'slots': slots})
         response = self._build_response('Delegate', slots=slots)
         return Response(response)
 
@@ -209,6 +216,7 @@ class ResponseBuilder(object):
                 If card is None, Amazon Lex uses one of the bot's
                 clarification prompts.(see the Error Handling section in the console.)
         '''
+        self.has_required_parameters({'fulfillment_state': fulfillment_state})
         response = self._build_response('Close', fulfillment_state=fulfillment_state, message=message, card=card)
         return Response(response)
 
@@ -227,7 +235,6 @@ class ResponseBuilder(object):
                 for v in none_parameters:
                     message += ' ' + str(v) + ' '
                 print(message)
-
 
     @classmethod
     def _build_response(self, response_type, fulfillment_state=None, message=None, intent_name=None, slots=None, slot_to_elicit=None, card=None):

@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='lexi',
-version='0.1',
+version='0.3',
 description='Easy development tool for Lex',
 url='https://github.com/ysak-y/lexi-test.git',
 author='Yoshiaki Yamada',

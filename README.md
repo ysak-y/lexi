@@ -41,3 +41,4 @@ then, execute function when `intent` is called by Lex.
 ## Will Do
 
 - CLI tool to initialize template.
+- Management Sample Utterances.

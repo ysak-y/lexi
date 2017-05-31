@@ -1,13 +1,13 @@
-# lexi
+# lexus
 
 ## OverView
 
-lexi is a library to create lambda function for AWS Lex.
+lexus is a library to create lambda function for AWS Lex.
 
 ## Install
 
 ```
-pip install lexi
+pip install lexus
 ```
 
 ## Get Start

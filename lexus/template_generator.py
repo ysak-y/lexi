@@ -17,8 +17,7 @@ req = lex.Request(request).to_dict
 if intent_name in globals():
     return globals()[intent_name](req, context).to_dict()
 else:
-    return lex.ResponseBuilder.elicit_intent("Can't find intent name's function in lambda.")
-            '''
+    return lex.ResponseBuilder.elicit_intent("Can't find intent name's function in lambda.")'''
             f.write(text)
         print("success to generate " + file_name + '.py')
 
@@ -27,4 +26,5 @@ parser.add_argument('-g', nargs="?", dest='file_name', metavar='Generate', type=
         action=GenerateTemplateAction, 
         help="Generate Lambda function template for AWS Lex in current directory. Enter file name, default is 'lambda_function'")
 
-args = parser.parse_args()
+def main():
+    args = parser.parse_args()
